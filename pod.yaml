@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ecoms
+  labels:
+    app: ecom  
+spec:
+  containers:
+  - name: ecom
+    image: frankisinfotech/apachedemo:v1
+    ports:
+    - containerPort: 80
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: ecom-svc
+spec:
+  selector:
+    app: ecom
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+        #nodePort: 32000
+  type: NodePort
+

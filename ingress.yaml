@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: fleetman-ingress
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: webapp.arca-payments.network
+    http:
+      paths:
+      - pathType: Prefix
+        path: /
+        backend:
+          service:
+            name: fleetman-webapp
+            port:
+              number: 80
+

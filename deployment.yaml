@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: apachedemo-deployment
+  labels:
+    app: apachedemo
+  namespace: monitor    
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: apachedemo
+  template:
+    metadata:
+      labels:
+        app: apachedemo
+    spec:
+      containers:
+      - name: apachedemo
+        image: frankisinfotech/apachedemo:v1
+        ports:
+        - containerPort: 80
+
